@@ -11,6 +11,7 @@ import { lastValueFrom } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './recorder-direct-upload.component.html',
+  styleUrls: ['./recorder-direct-upload.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecorderDirectUploadComponent {

@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.bar {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}

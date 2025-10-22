@@ -1,15 +1,19 @@
-<section style="border:1px solid #ddd;border-radius:8px;padding:12px;margin-bottom:12px;">
-  <h3 style="margin-top:0;">{{ title }}</h3>
+<section class="card">
+  <h3 class="title">{{ title }} (With Strategy)</h3>
 
   <div>
     Status: <strong>{{ status }}</strong>
-    <span *ngIf="status === 'uploading'"> • {{ (progress * 100) | number:'1.0-0' }}%</span>
+    <span *ngIf="status === 'uploading'">
+      • {{ (progress * 100) | number:'1.0-0' }}%
+    </span>
   </div>
 
-  <progress [value]="progress" max="1" style="width:100%;"></progress>
+  <progress class="bar" [value]="progress" max="1"></progress>
 
-  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px;">
-    <button (click)="start()" [disabled]="status==='uploading' || status==='recording'">Start</button>
+  <div class="actions">
+    <button (click)="start()" [disabled]="status==='uploading' || status==='recording'">
+      Start
+    </button>
     <button (click)="reset()">Reset</button>
   </div>
 </section>

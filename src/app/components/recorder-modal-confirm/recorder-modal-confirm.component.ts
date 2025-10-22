@@ -11,6 +11,7 @@ import { lastValueFrom } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './recorder-modal-confirm.component.html',
+  styleUrls: ['./recorder-modal-confirm.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecorderModalConfirmComponent {

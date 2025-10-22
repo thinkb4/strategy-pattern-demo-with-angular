@@ -9,6 +9,7 @@ import { RecordingStrategy } from '@/app/core/recording/recording-strategy.types
   standalone: true,
   imports: [CommonModule],
   templateUrl: './recorder-with.component.html',
+  styleUrls: ['./recorder-with.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecorderWithComponent {
