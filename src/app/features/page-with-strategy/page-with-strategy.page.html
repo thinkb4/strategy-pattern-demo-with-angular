@@ -1,0 +1,10 @@
+<h2 style="margin-top:0;">Part 2 — With Strategy (DI + registry)</h2>
+<p>Same UI, but orchestration is in strategies. Component stays slim and testable.</p>
+
+<!-- Passing the "kind" by component input (mirrors your pattern) -->
+<app-recorder-with title="Direct Upload" [strategy]="DemoKind.DirectUpload"></app-recorder-with>
+<app-recorder-with title="Modal Confirm" [strategy]="DemoKind.ModalConfirm"></app-recorder-with>
+
+<p>
+  Back to <a routerLink="/">Without Strategy</a>.
+</p>
