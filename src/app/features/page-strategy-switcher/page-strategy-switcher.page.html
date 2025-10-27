@@ -1,0 +1,21 @@
+<h2 class="title">Part 3 — Strategy Switcher (runtime)</h2>
+
+<section class="switcher">
+  <label for="kind" class="label">Choose a strategy:</label>
+  <select id="kind" [formControl]="kindCtrl" class="select">
+    <option [ngValue]="null">Default (DI)</option>
+    <option *ngFor="let o of options" [ngValue]="o.value">{{ o.label }}</option>
+  </select>
+</section>
+
+<section class="preview">
+  <div class="hint">
+    <strong>Selected: </strong>
+    <span>{{ currentLabel() }}</span>
+  </div>
+
+  <app-recorder-with
+    [title]="currentTitle()"
+    [strategy]="selectedKind() ?? undefined">
+  </app-recorder-with>
+</section>

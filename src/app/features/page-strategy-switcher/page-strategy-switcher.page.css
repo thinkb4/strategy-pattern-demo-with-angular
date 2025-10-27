@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.select {
+  min-width: 240px;
+}
+
+.preview {
+  margin-top: 12px;
+}
+
+.hint {
+  margin-bottom: 8px;
+  opacity: 0.8;
+}

@@ -1,12 +1,60 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ElementRef,
+  HostListener,
+  signal,
+} from '@angular/core';
+import { Router, NavigationEnd, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NgFor } from '@angular/common';
+import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  selector: 'app-root',
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgFor],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class AppComponent {
+  /** Toggle state for the menu popover */
+  readonly menuOpen = signal(false);
+
+  /** Nav items (ensure these match your route paths) */
+  readonly items = [
+    { label: 'Without Strategy', link: '/without-strategy' },
+    { label: 'With Strategy', link: '/with-strategy' },
+    { label: 'Strategy Switcher', link: '/strategy-switcher' },
+  ] as const;
+
+  constructor(private router: Router, private host: ElementRef<HTMLElement>) {
+    // Close menu on navigation
+    this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe(() => this.menuOpen.set(false));
+  }
+
+  toggleMenu(ev: Event): void {
+    ev.stopPropagation();
+    this.menuOpen.update((v) => !v);
+  }
+
+  close(): void {
+    this.menuOpen.set(false);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocClick(e: Event): void {
+    // Close when clicking outside the header area
+    if (!this.host.nativeElement.contains(e.target as Node)) {
+      this.menuOpen.set(false);
+    }
+  }
+
+  onKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Escape') {
+      this.menuOpen.set(false);
+    }
+  }
+}
